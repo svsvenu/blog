@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.venu.jsf</groupId>
+  <artifactId>kitchensink</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>kitchensink Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <repositories>
+  <repository>
+    <id>terracotta-repository</id>
+    <url>http://www.terracotta.org/download/reflector/releases</url>
+    <releases>
+        <enabled>true</enabled> 
+    </releases>
+</repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+       <dependency>
+        <groupId>javax.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>2.0</version>
+        <scope>provided</scope>
+    </dependency>
+    
+     <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
+            <dependency>
+  <groupId>org.jboss.ejb3</groupId>
+  <artifactId>jboss-ejb3-ext-api</artifactId>
+  <version>2.1.0</version>
+  <scope>provided</scope>
+</dependency>
+
+<!--  <dependency>
+	<groupId>net.sf.ehcache</groupId>
+	<artifactId>ehcache</artifactId>
+	<version>2.10.0</version>
+</dependency> 
+ -->
+<!-- <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.6.1</version>
+    </dependency> -->
+
+ <!--    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.6.1</version>
+    </dependency>
+ -->
+   <!--  <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId> 
+        <version>1.7.5</version>
+    </dependency> -->
+
+ <!-- <dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId> 
+	<version>1.2.17</version>
+	<scope>provided</scope>
+</dependency>  -->
+
+<dependency>
+   <groupId>org.jboss.logging</groupId>
+   <artifactId>jboss-logging</artifactId>
+   <version>3.0.0.CR1</version>
+   <scope>provided</scope>
+</dependency>
+    
+  </dependencies>
+  <build>
+    <finalName>kitchensink</finalName>
+     <plugins>
+  
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.7.Final</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <!-- <configuration>
+         <archive>
+            <manifestEntries>
+               <Dependencies>org.apache.log4j</Dependencies>
+            </manifestEntries>
+         </archive>
+      </configuration>  -->
+   </plugin>
+        </plugins>
+  </build>
+</project>
