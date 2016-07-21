@@ -1,0 +1,28 @@
+### Set the base image to Fedora
+FROM jboss/base-jdk:7
+
+### File Author / Maintainer
+MAINTAINER "Venu Surampudi" "svsvenu@gmail.com"
+
+### Install EAP 6.1
+ADD jboss-eap-6.1.zip /tmp/jboss-eap-6.1.zip
+RUN unzip /tmp/jboss-eap-6.1.zip
+
+### Set Environment
+ENV JBOSS_HOME /opt/jboss/jboss-eap-6.1
+
+### Create EAP User
+RUN $JBOSS_HOME/bin/add-user.sh admin emINem99$ --silent
+
+##
+RUN ls
+
+### Configure EAP
+RUN echo "JAVA_OPTS=\"\$JAVA_OPTS -Djboss.bind.address=0.0.0.0 -DXms256m -DXmx256m -Djboss.bind.address.management=0.0.0.0\"" >> $JBOSS_HOME/bin/standalone.conf
+
+
+### Open Ports
+EXPOSE 8080 9990 9999
+
+### Start EAP
+ENTRYPOINT $JBOSS_HOME/bin/standalone.sh -c standalone-full-ha.xml
